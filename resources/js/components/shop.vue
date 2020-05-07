@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                <!--<div class="grid grid-3">
+                <div class="grid grid-3">
                     <div class="bg-white mx-2 my-2 shadow-sm border rounded">
                         <div class="h-px-200">
                             image goes here
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                     </div>  
-                </div>-->
+                </div>
                 
             </div>
         </div>

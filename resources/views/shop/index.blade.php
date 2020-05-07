@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="w-90">
+   <!-- <div class="w-90">
         <div class="text-center py-3">
             <h1 class="text-3xl">Shop Page</h1>
         </div>
@@ -45,6 +45,6 @@
         </div>
     </div>
     <!--<example-component></example-component>-->
-    <!--<shop></shop>-->
+    <shop></shop>
     <script src="/resources/js/pp.js"></script>
 @endsection
