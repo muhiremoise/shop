@@ -17,7 +17,13 @@
                 <p class>{{ $product->details }}</p>
                 <h1 class="text-3xl font-weight-bold ">{{ $product->presentPrice() }}</h1>
                 <p class="text-lg pt-3">{{ $product->description }}</p>
-                    <a class="btn btn-success" href="{{ route('cart') }}"> Add To Cart </a>     
+                <form action="{{ route('cart.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $product->id }}">
+                    <input type="hidden" name="name" value="{{ $product->name }}">
+                    <input type="hidden" name="price" value="{{ $product->price }}">
+                    <button type="submit" class="btn btn-success">Add To Cart</button>
+                </form>
                 </div>
             </div>
         </div>

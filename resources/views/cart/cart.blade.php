@@ -5,7 +5,7 @@
             <h1 class="text-center text-3xl">Shopping Cart</h1>
         </div>
         <div class="w-100 flex">
-            <div class="w-70 bg-white">
+            <div class="w-70 bg-white px-4 py-4">
                 
                 <table class="table table-hover">
                     <tbody>
@@ -51,10 +51,19 @@
                       </tr>
                     </tbody>
                   </table>
+                  <div>
+                      <a href="{{route('checkout')}}">
+                          <button class="btn btn-success float-right">Checkout</button>
+                      </a>
+                      <a href="{{route('shop')}}">
+                        <button class="btn btn-outline-success float-left">Continue Shopping</button>
+                    </a>
+                  </div>
             </div>
             <div class="w-30">
 
             </div>
         </div>
     </div>
+    @include('products.might-like')
 @endsection

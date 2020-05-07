@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 
-class ShopController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class ShopController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $products = Product::inRandomOrder()->take(10)->get() ;
-        return view('shop.index')->with('products', $products);
+    {   
+        $mightAlsoLike = Product::mightAlsoLike()->get();
+        return view('cart.cart')->with('mightAlsoLike', $mightAlsoLike);
     }
 
     /**
@@ -37,25 +38,21 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cart::add($request->id, $request->name, 1, $request->price)
+                ->associate('App\Product');
+         
+        return redirect()->route('cart')->with('success', 'Item Was Added in your cart');        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $slug
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function show($slug)
+    public function show($id)
     {
-        $product = Product::where('slug', $slug)->firstOrFail();
-        $mightAlsoLike = Product::where('slug', '!=', $slug)->mightAlsoLike()->get();
-
-        return view('products.show')->with([
-            'product' => $product,
-            'mightAlsoLike' => $mightAlsoLike,
-            ]);
+        //
     }
 
     /**

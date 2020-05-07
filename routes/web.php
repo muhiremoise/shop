@@ -17,11 +17,15 @@ Route::get('/', 'PagesController@index')->name('index');
 
 Route::get('/shop/{product}', 'ShopController@show')->name('product.show');
 
-Route::get('/shop', 'ShopController@index')->name('shop.index');
+Route::get('/shop', 'ShopController@index')->name('shop');
 
-Route::get('/cart', function(){
-    return view('cart.cart');
-})->name('cart');
+Route::get('/cart', 'CartController@index')->name('cart');
+
+Route::post('/cart', 'CartController@store')->name('cart.store');
+
+Route::get('/checkout', function(){
+    return view('checkout');
+})->name('checkout');
 
 Auth::routes();
 

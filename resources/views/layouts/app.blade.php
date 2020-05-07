@@ -42,7 +42,7 @@
                         <a href="{{ route('index') }}" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="{{ route('shop.index') }}" class="nav-link">Shop</a>
+                            <a href="{{ route('shop') }}" class="nav-link">Shop</a>
                         </li>
                         <li class="nav-item mx-2">
                         <a class="nav-link" href="{{ route('cart') }}">Cart</a>
