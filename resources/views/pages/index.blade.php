@@ -18,7 +18,7 @@
                     <h5 class="text-2xl">{{ $product->name }}</h5>
                     </a>
                     
-                    <p> {{ $product->presentPrice() }} </p>
+                    <p> {{ $product->price }} </p>
                 </div>
                 </div>
             @endforeach

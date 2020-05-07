@@ -36,7 +36,7 @@
                         <a class="no-underline text-grey-darkest" href="{{ route('product.show', $product->slug) }}">
                             <h5 class="text-xl">{{ $product->name }}</h5>
                         </a>
-                        <p> {{ $product->presentPrice() }} </p>
+                        <p> {{ $product->price }} </p>
                     </div>
                     </div>
                     @endforeach

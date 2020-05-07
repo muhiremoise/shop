@@ -14,7 +14,7 @@
                         <h3 class="text-2xl">{{ $product->name }}</h3>
                         </a>
                         
-                        <p> {{ $product->presentPrice() }} </p>
+                        <p> {{ $product->price }} </p>
                     </div>
                     </div>
             @endforeach
