@@ -44,4 +44,7 @@
             </div>
         </div>
     </div>
+    <!--<example-component></example-component>-->
+    <!--<shop></shop>-->
+    <script src="/resources/js/pp.js"></script>
 @endsection
