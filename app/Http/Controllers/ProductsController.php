@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Product;
 
@@ -14,7 +14,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        return response(Product::inRandomOrder()->take(4)->get()->jsonSerialize(), Response::HTTP_OK);
     }
 
     /**

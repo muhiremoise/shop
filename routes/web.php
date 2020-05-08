@@ -23,6 +23,19 @@ Route::get('/cart', 'CartController@index')->name('cart');
 
 Route::post('/cart', 'CartController@store')->name('cart.store');
 
+Route::post('/cart/saveforlater/{product}', 'CartController@switchToSaveForLater')->name('cart.saveForLater');
+
+Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
+
+
+Route::post('/saveforlater/switchToCart/{product}', 'SaveForLaterController@switchToCart')->name('saveForLater.switchToCart');
+
+Route::delete('/saveForLater/{product}', 'SaveForLaterController@destroy')->name('saveForLater.destroy');
+
+Route::get('empty', function(){
+    Cart::instance('saveForLater')->destroy();
+});
+
 Route::get('/checkout', function(){
     return view('checkout');
 })->name('checkout');
@@ -30,3 +43,5 @@ Route::get('/checkout', function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/products', 'PagesController@productPage')->name('');

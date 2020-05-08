@@ -12,5 +12,9 @@ class PagesController extends Controller
         $products = Product::inRandomOrder()->take(4)->get() ;
         return view('pages.index')->with('products', $products);
     }
+
+    public function productPage(){
+        return view('products');
+    }
     
 }

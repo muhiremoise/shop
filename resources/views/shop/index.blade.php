@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-   <!-- <div class="w-90">
+    <div class="w-90 mx-auto">
         <div class="text-center py-3">
             <h1 class="text-3xl">Shop Page</h1>
         </div>

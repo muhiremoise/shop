@@ -6,6 +6,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+        <script>
+            window.Laravel  =  { csrfToken: '{{ csrf_token() }}' }
+        </script>
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -38,22 +41,28 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-2">
+                        <li class="nav-item mx-4">
                         <a href="{{ route('index') }}" class="nav-link">Home</a>
                         </li>
-                        <li class="nav-item mx-2">
+                        <li class="nav-item mx-4">
                             <a href="{{ route('shop') }}" class="nav-link">Shop</a>
                         </li>
-                        <li class="nav-item mx-2">
-                        <a class="nav-link" href="{{ route('cart') }}">Cart</a>
+                        <li class="nav-item mx-4">
+                        <a class="nav-link" href="{{ route('cart') }}">Cart 
+                            @if(Cart::instance('default')->count() > 0))
+                            <div class="bg-green-dark text-white absolute -mt-6 rounded-full text-center" style="width: 23px;height: 23px; margin-left: 29px; padding-top: 2px">
+                                {{ Cart::instance('default')->count() }}
+                            </div>
+                            @endif
+                        </a>
                         </li>
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            <li class="nav-item mx-4">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
+                                <li class="nav-item mx-4">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
@@ -84,6 +93,10 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+    <script src="{{ asset('js/app.js') }}"></script>   
+    
+    
     </div>
 </body>
 </html>
