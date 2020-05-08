@@ -1,7 +1,7 @@
 <template>
     <div class="w-100 mx-auto" style="margin-top: -44px">
         <carousel-3d :autoplay="true" :autoplay-timeout="2000" :width="1000" :height="280" :display="3" 
-                :controls-visible="true" :controls-prev-javascript="'U+2B98;'" :controls-next-javascript="'10093;'">
+                :controls-visible="false" :controls-prev-javascript="'U+2B98;'" :controls-next-javascript="'10093;'">
             <slide  v-for="(slide, i) in slides" :key="slide" :index="i" class="border-none">
                 <figure class="w-100">
                     <img :src="slide.img" />
