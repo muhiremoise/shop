@@ -15,7 +15,7 @@
                 <div class="py-4">
                     <h1 class="text-3xl font-weight-bold line-height-small"> {{ $product->name }} </h1>
                 <p class>{{ $product->details }}</p>
-                <h1 class="text-3xl font-weight-bold ">{{ $product->presentPrice() }}</h1>
+                <h1 class="text-3xl font-weight-bold ">{{ $product->price }}</h1>
                 <p class="text-lg pt-3">{{ $product->description }}</p>
                 <form action="{{ route('cart.store') }}" method="POST">
                     @csrf

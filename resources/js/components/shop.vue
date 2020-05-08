@@ -4,33 +4,44 @@
         <div class="text-center py-3">
             <h1 class="text-3xl">Shop Page Here</h1>
         </div>
+        
         <div class="w-100 flex">
             <div class="w-25">
                 <div class="w-80 mx-auto  card shadow-sm">
                     <div class="w-100 my-auto">
-                        <input class="w-100" type="text" placeholder="Search..">
+                        <input class="w-100 rounded border-none border" type="text" v-model="search" placeholder="Search...">
                     </div>   
                 </div>
                 <div class="">
                     <div class="w-80 mx-auto  card mt-3 shadow-sm">
                         <ul class="list">
                             <li class="text-lg font-weight-bold">By Category</li>
-                            <li class="text-sm mt-3 pl-5">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Laptop</label>
+                            <li class="text-sm mt-3 w"  style="border-bottom: 1px grey solid" v-on:click="component='all-products'">
+                                <a href="" class="text-black hover:" style="text-decoration:none">
+                                    <h3 class="text-lg">All</h3>
+                                </a>
                             </li>
-                            <li class="text-sm mt-3 pl-5">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Desktop</label>
+                            <li class="text-sm mt-3 w"  style="border-bottom: 1px grey solid" v-on:click="component='app-laptop'">
+                                <a href="" class="text-black hover:" style="text-decoration:none">
+                                    <h3 class="text-lg">Laptop</h3>
+                                </a>
                             </li>
-                            <li class="text-sm mt-3 pl-5">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Mobile App</label>
+                            <li class="text-sm mt-3 cursor-pointer"  style="border-bottom: 1px grey solid">
+                                <a href="#" class="text-black hover:" style="text-decoration:none">
+                                    <h3 class="text-lg">Mobile App</h3>
+                                </a>
                             </li>
-                            <li class="text-sm mt-3 pl-5">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">TVs</label>
+                            <li class="text-sm mt-3 w"  style="border-bottom: 1px grey solid">
+                                <a href="" class="text-black hover:" style="text-decoration:none">
+                                    <h3 class="text-lg">Desktop</h3>
+                                </a> 
                             </li>
+                            <li class="text-sm mt-3 w"  style="border-bottom: 1px grey solid">
+                                <a href="" class="text-black hover:" style="text-decoration:none">
+                                    <h3 class="text-lg">TVs</h3>
+                                </a> 
+                            </li>
+                            
                         </ul>
                     </div>
                     <div class="w-80 mx-auto card mt-3 shadow-sm">
@@ -60,28 +71,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid grid-3">
-                    <div class="bg-white mx-2 my-2 shadow-sm border rounded">
-                        <div class="h-px-200">
-                            image goes here
-                        </div>
-                        <div class="card-body">
-                            <div>
-                                <a class="no-underline text-grey-darkest" href="">
-                                    <h5 class="text-xl">Juice</h5>
-                                </a>
-                                <h6 class="text-green">Price: 100FRW</h6>
-                            </div>
-                            <div class="text-centered">
-                                <button class="btn bg-blue btn-sm">
-                                    <a class="no-underline text-white" href="">
-                                        <h5 class="text-xl pt-2">Add To Cart</h5>
-                                    </a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
+                <component :is="component" v-bind:products="products" :filteredProducts="filteredProducts"></component>
                 
             </div>
         </div>
@@ -90,16 +80,41 @@
 </template>
 
 <script>
+    //import Autocomplete from '@trevoreyre/autocomplete-vue'
+    import Laptop from './categories/Laptop.vue'
+    import allProducts from './categories/allProducts.vue'
     export default {
+        components: {
+            'app-laptop' : Laptop,
+            'all-products' : allProducts
+            //Autocomplete
+        },
+        filters: {
+          capitalize: function(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+          }
+        },
         data(){
             return{
+                component: 'all-products',
                 products:[
-                    {name: 'Techno Pop', price: '2500Frw', category: 'Mobile', img: './public/images/sample_image.webp' },
-                    {name: 'Macbook i32', price: '2500Frw', category: 'laptop', img: './public/images/sample_image.webp' },
-                    {name: 'Hp Air 56', price: '2500Frw', category: 'laptop', img: './public/images/sample_image.webp' },
-                    {name: 'Philips', price: '2500Frw', category: 'Tvs', img: './public/images/sample_image.webp' }
-                ]
+                    {name: 'techno Pop', price: '2500Frw', category: 'Mobile', img: 'images/sample_image.webp' },
+                    {name: 'macbook i32', price: '2500Frw', category: 'laptop', img: 'images/sample_image.webp' },
+                    {name: 'hp Air 56', price: '2500Frw', category: 'laptop', img: 'images/sample_image.webp' },
+                    {name: 'philips', price: '2500Frw', category: 'Tvs', img: 'images/sample_image.webp' }
+                ],
+                search: '',
+                
             }
-        }
-    }
+        },
+        computed:{
+            filteredProducts:function(){
+                return this.products.filter((product) => {
+                return product.name.match(this.search);
+            })
+       }
+
+        },
+  }
+
 </script>

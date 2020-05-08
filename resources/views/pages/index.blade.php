@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+    <div>
+        <slide-show></slide-show>
+    </div>
     <div class="w-90 mx-auto pt-4">
         <div class="text-center pb-5">
             <h1 class="text-2xl">Welcome To Our Shop</h1>
@@ -18,11 +21,12 @@
                     <h5 class="text-2xl">{{ $product->name }}</h5>
                     </a>
                     
-                    <p> {{ $product->presentPrice() }} </p>
+                    <p> {{ $product->price }} </p>
                 </div>
                 </div>
             @endforeach
           </div>
     </div>
     
+    <script src="/resources/js/pp.js"></script>
 @endsection

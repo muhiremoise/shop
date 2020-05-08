@@ -18,9 +18,14 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+import Carousel3d from 'vue-carousel-3d';
+import Autocomplete from '@trevoreyre/autocomplete-vue'
+import '@trevoreyre/autocomplete-vue/dist/style.css'
+Vue.component('slide-show', require('./components/slideshow.vue').default);
 Vue.component('shop', require('./components/shop.vue').default);
+
+Vue.use(Autocomplete);
+Vue.use(Carousel3d);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
